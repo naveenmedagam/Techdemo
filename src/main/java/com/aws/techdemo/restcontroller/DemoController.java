@@ -13,33 +13,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.aws.techdemo.entity.Product;
-import com.aws.techdemo.repository.ProductRepository;
+import com.aws.techdemo.entity.Property;
+import com.aws.techdemo.repository.ProperetyRepository;
 
 @RestController
 @RequestMapping(value = "/api")
 public class DemoController {
 
 	@Autowired
-	private  ProductRepository productRepository;
-	
-	@GetMapping(value = "/products")
-	public Iterable<Product> getProducts(){
-		
-		return productRepository.findAll();
-	}
-	
-	@PostMapping(value = "/product", consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
-	public Product createProduct(@RequestBody Product product){
-		
-		return productRepository.save(product);
+	private ProperetyRepository propertyRepository;
+
+	@GetMapping(value = "/properties")
+	public Iterable<Property> getProducts() {
+
+		return propertyRepository.findAll();
 	}
 
-	@GetMapping(value = "/products/{id}")
-	public Product getProductById(@PathVariable Long id){
-		
-		return productRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product not Found"));
-	}
-	
-	
+	 @GetMapping(value = "/property/{id}") 
+	 public Property getProductById(@PathVariable  int id){
+	  
+	 return propertyRepository.findById(id).orElseThrow(()-> new
+	 ResponseStatusException(HttpStatus.NOT_FOUND,"Product not Found"));
+	 }
+
 }
