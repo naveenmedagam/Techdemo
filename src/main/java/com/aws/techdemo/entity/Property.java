@@ -1,26 +1,57 @@
 package com.aws.techdemo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties
 @Entity(name = "properties")
 public class Property {
 
 	@Id
+	@Column(name = "property_id")
 	private int propertyId;
+	@Column(name = "price")
 	private String price;
+	@Column(name = "price_in_eur")
 	private String priceInEur;
+	
+	@Column(name = "address")
 	private String address;
+	
+	@Column(name = "published_date")
 	private String publishedDate;
-	private String legacyPropertyId;
+	
+	@Column(name = "area")
+	private String area;
+	
+	@Column(name = "description")
 	private String description;
+	
 	//private String propertyType;
 	//private String listingAgent;
+	@Column(name = "lon")
 	private String lon;
+	
+	@Column(name = "lat")
 	private String lat;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "district_id")
+	private District district;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "property_type_id")
+	private PropertyType propertType;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "private_bailiff_id")
+	private Bailiff bailiff;
 	//private String imageUrl;
 	public int getPropertyId() {
 		return propertyId;
@@ -52,12 +83,7 @@ public class Property {
 	public void setPublishedDate(String publishedDate) {
 		this.publishedDate = publishedDate;
 	}
-	public String getLegacyPropertyId() {
-		return legacyPropertyId;
-	}
-	public void setLegacyPropertyId(String legacyPropertyId) {
-		this.legacyPropertyId = legacyPropertyId;
-	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -76,14 +102,30 @@ public class Property {
 	public void setLat(String lat) {
 		this.lat = lat;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+	public District getDistrict() {
+		return district;
+	}
+	public void setDistrict(District district) {
+		this.district = district;
+	}
+	public PropertyType getPropertType() {
+		return propertType;
+	}
+	public void setPropertType(PropertyType propertType) {
+		this.propertType = propertType;
+	}
+	public Bailiff getBailiff() {
+		return bailiff;
+	}
+	public void setBailiff(Bailiff bailiff) {
+		this.bailiff = bailiff;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
 	
 	
 	

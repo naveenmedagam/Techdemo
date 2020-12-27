@@ -14,26 +14,28 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.aws.techdemo.entity.Property;
+import com.aws.techdemo.model.PropertyData;
+import com.aws.techdemo.model.PropertyDataResponse;
 import com.aws.techdemo.repository.ProperetyRepository;
+import com.aws.techdemo.service.PropertyService;
 
 @RestController
 @RequestMapping(value = "/api")
 public class DemoController {
 
 	@Autowired
-	private ProperetyRepository propertyRepository;
+	private PropertyService propertyService;
 
-	@GetMapping(value = "/properties")
-	public Iterable<Property> getProducts() {
+	@GetMapping(value = "/properties/{offset}/{limit}")
+	public PropertyDataResponse getProducts(@PathVariable int offset,@PathVariable int limit ) {
 
-		return propertyRepository.findAll();
+		return propertyService.getAllProperties(offset,limit);
 	}
 
 	 @GetMapping(value = "/property/{id}") 
-	 public Property getProductById(@PathVariable  int id){
+	 public PropertyData getProductById(@PathVariable  int id){
 	  
-	 return propertyRepository.findById(id).orElseThrow(()-> new
-	 ResponseStatusException(HttpStatus.NOT_FOUND,"Product not Found"));
+	 return propertyService.findByProductId(id);
 	 }
 
 }
