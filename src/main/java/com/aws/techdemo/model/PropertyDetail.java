@@ -1,7 +1,7 @@
 package com.aws.techdemo.model;
 
-
-public class PropertyData {
+//@JsonInclude(Include.NON_NULL)
+public class PropertyDetail {
 	
 	
 	private int propertyId;
@@ -26,7 +26,52 @@ public class PropertyData {
 	private String lat;
 	
 	private String image;
+	private String extras;
+	private String propertyFloor;
+	private String term;
+	private String announcementDate;
+	private String mapsCoorinateUrl;
 	
+
+	public String getExtras() {
+		return extras;
+	}
+
+	public void setExtras(String extras) {
+		this.extras = extras;
+	}
+
+	public String getPropertyFloor() {
+		return propertyFloor;
+	}
+
+	public void setPropertyFloor(String propertyFloor) {
+		this.propertyFloor = propertyFloor;
+	}
+
+	public String getTerm() {
+		return term;
+	}
+
+	public void setTerm(String term) {
+		this.term = term;
+	}
+
+	public String getAnnouncementDate() {
+		return announcementDate;
+	}
+
+	public void setAnnouncementDate(String announcementDate) {
+		this.announcementDate = announcementDate;
+	}
+
+	public String getMapsCoorinateUrl() {
+		return mapsCoorinateUrl;
+	}
+
+	public void setMapsCoorinateUrl(String mapsCoorinateUrl) {
+		this.mapsCoorinateUrl = mapsCoorinateUrl;
+	}
 
 	public int getPropertyId() {
 		return propertyId;
@@ -124,6 +169,4 @@ public class PropertyData {
 	public void setPropertyType(String propertyType) {
 		this.propertyType = propertyType;
 	}
-
-	
 }

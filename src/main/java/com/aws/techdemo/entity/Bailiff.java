@@ -2,11 +2,13 @@ package com.aws.techdemo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties
-@Entity(name="private_bailiffs")
+@Entity
+@Table(name = "private_bailiffs")
 public class Bailiff {
 	
 	@Id

@@ -2,8 +2,10 @@ package com.aws.techdemo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name="property_types")
+@Entity
+@Table(name = "property_types")
 public class PropertyType {
 	@Id
 	private int propertyTypeId;

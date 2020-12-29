@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PropertyDataResponse {
 	private int totalRecords;
-	private List<PropertyData> propertiesData;
+	private List<ListProperty> propertiesData;
 	
 	public int getTotalRecords() {
 		return totalRecords;
@@ -12,10 +12,10 @@ public class PropertyDataResponse {
 	public void setTotalRecords(int totalRecords) {
 		this.totalRecords = totalRecords;
 	}
-	public List<PropertyData> getPropertiesData() {
+	public List<ListProperty> getPropertiesData() {
 		return propertiesData;
 	}
-	public void setPropertiesData(List<PropertyData> propertiesData) {
+	public void setPropertiesData(List<ListProperty> propertiesData) {
 		this.propertiesData = propertiesData;
 	}
 	

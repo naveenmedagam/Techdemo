@@ -2,8 +2,10 @@ package com.aws.techdemo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name ="districts")
+@Entity
+@Table(name = "districts")
 public class District {
 	@Id
 	private int districtId;
