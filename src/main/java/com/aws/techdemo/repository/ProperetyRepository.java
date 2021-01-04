@@ -18,8 +18,4 @@ public interface ProperetyRepository extends JpaRepository<Property, Integer>{
 	
 	@Query(value= "select * from properties p inner join districts d  on p.district_id=d.district_id where  d.district_name_bg =:districtName",  nativeQuery = true )
 	Page<Property> findPropertiesByDistrictName(String districtName, Pageable pageable);
-//	
-//	@Query(value= "select * from properties p districts d  where  d.district_name_bg =:districtName",  nativeQuery = true )
-//	Page<Property> findPropertiesByDistrictName(String districtName, Pageable pageable);
-//	
 }
