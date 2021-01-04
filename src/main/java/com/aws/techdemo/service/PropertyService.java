@@ -22,15 +22,23 @@ public class PropertyService {
 	@Autowired
 	private ProperetyRepository propertyRepository;
 
-	public PropertyDataResponse getAllProperties(Pageable pageable) {
+	public PropertyDataResponse getAllProperties(Pageable pageable, String districtName) {
 		List<ListProperty> propertiesData = new ArrayList<>();
 		PropertyDataResponse propertyDataResponse = new PropertyDataResponse();
+		Page<Property> properties = null;
+		if(districtName == null||districtName.isEmpty() ) {
+		 properties = propertyRepository.findAll(pageable);
+			propertyDataResponse.setTotalRecords(propertyRepository.propertiesCount());
 
-		Page<Property> properties = propertyRepository.findAll(pageable);
+		}
+		else {
+			properties = propertyRepository.findPropertiesByDistrictName(districtName, pageable);
+			propertyDataResponse.setTotalRecords(propertyRepository.propertiesCountbyDistrictName(districtName));
+
+		}
 		for (Property property : properties) {
 			propertiesData.add(populateListPropertyData(property));
 		}
-		propertyDataResponse.setTotalRecords(propertyRepository.propertiesCount());
 		propertyDataResponse.setPropertiesData(propertiesData);
 		return propertyDataResponse;
 	}
@@ -48,9 +56,8 @@ public class PropertyService {
 		pd.setPrice(property.getPrice());
 		pd.setPriceInEur(property.getPriceInEur());
 		pd.setAddress(property.getAddress());
-		if (property.getDistrict() != null)
-			pd.setAddress(property.getAddress() + "," + property.getDistrict() == null ? ""
-					: property.getDistrict().getDistrictNameBg());
+		if (property.getDistrict() != null &&  property.getDistrict().getDistrictNameBg()!=null)
+			pd.setAddress(property.getAddress() + "," + property.getDistrict().getDistrictNameBg());
 		pd.setBuildUpArea(property.getArea());
 		pd.setPublishedDate(property.getPublishedDate());
 		pd.setLat(property.getLat());
