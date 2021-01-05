@@ -60,6 +60,7 @@ public class PropertyService {
 			pd.setAddress(property.getAddress() + "," + property.getDistrict().getDistrictNameBg());
 		pd.setBuildUpArea(property.getArea());
 		pd.setPublishedDate(property.getPublishedDate());
+		pd.setImage(property.getPropertyImages().getPropertyImageUrl());
 		pd.setLat(property.getLat());
 		pd.setLon(property.getLon());
 		if (property.getBailiff() != null)

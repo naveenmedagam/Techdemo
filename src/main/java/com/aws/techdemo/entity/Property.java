@@ -68,6 +68,10 @@ public class Property {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "private_bailiff_id")
 	private Bailiff bailiff;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "property_id")
+	private propertyImages propertyImages;
 
 	// private String imageUrl;
 	public int getPropertyId() {
@@ -205,6 +209,15 @@ public class Property {
 	public void setMapsCoorinateUrl(String mapsCoorinateUrl) {
 		this.mapsCoorinateUrl = mapsCoorinateUrl;
 	}
+
+	public propertyImages getPropertyImages() {
+		return propertyImages;
+	}
+
+	public void setPropertyImages(propertyImages propertyImages) {
+		this.propertyImages = propertyImages;
+	}
+	
 
 
 }
