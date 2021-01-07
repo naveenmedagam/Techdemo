@@ -13,9 +13,9 @@ public interface ProperetyRepository extends JpaRepository<Property, Integer>{
 	@Query(value= "select count(p) from properties p",  nativeQuery = true )
 	int propertiesCount();
 	
-	@Query(value= "select count(*) from properties p inner join districts d  on p.district_id=d.district_id where  d.district_name_bg =:districtName",  nativeQuery = true )
-	int propertiesCountbyDistrictName(String districtName);
+	@Query(value= "select count(*) from properties p inner join district_courts d  on p.district_court_id=d.district_court_id where  d.district_court_name_bg =:districtCourtName",  nativeQuery = true )
+	int propertiesCountbyDistrictCourtName(String districtCourtName);
 	
-	@Query(value= "select * from properties p inner join districts d  on p.district_id=d.district_id where  d.district_name_bg =:districtName",  nativeQuery = true )
-	Page<Property> findPropertiesByDistrictName(String districtName, Pageable pageable);
+	@Query(value= "select * from properties p inner join district_courts d  on p.district_court_id=d.district_court_id where  d.district_court_name_bg =:districtCourtName",  nativeQuery = true )
+	Page<Property> findPropertiesByDistrictName(String districtCourtName, Pageable pageable);
 }

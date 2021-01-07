@@ -24,9 +24,9 @@ public class DemoController {
 
 	@CrossOrigin
 	@GetMapping(value = "/property/list")
-	public PropertyDataResponse listProperties(@RequestParam(required = false) String districtName,Pageable pageable) {
+	public PropertyDataResponse listProperties(@RequestParam(required = false) String districtCourtName,Pageable pageable) {
 
-		return propertyService.getAllProperties(pageable, districtName);
+		return propertyService.getAllProperties(pageable, districtCourtName);
 	}
 
 	 @CrossOrigin

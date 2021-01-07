@@ -33,7 +33,7 @@ public class PropertyService {
 		}
 		else {
 			properties = propertyRepository.findPropertiesByDistrictName(districtName, pageable);
-			propertyDataResponse.setTotalRecords(propertyRepository.propertiesCountbyDistrictName(districtName));
+			propertyDataResponse.setTotalRecords(propertyRepository.propertiesCountbyDistrictCourtName(districtName));
 
 		}
 		for (Property property : properties) {
@@ -56,8 +56,8 @@ public class PropertyService {
 		pd.setPrice(property.getPrice());
 		pd.setPriceInEur(property.getPriceInEur());
 		pd.setAddress(property.getAddress());
-		if (property.getDistrict() != null &&  property.getDistrict().getDistrictNameBg()!=null)
-			pd.setAddress(property.getAddress() + "," + property.getDistrict().getDistrictNameBg());
+		if (property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
+			pd.setAddress(property.getAddress() + "," + property.getDistrictCourts().getDistrictCourtNameBg());
 		pd.setBuildUpArea(property.getArea());
 		pd.setPublishedDate(property.getPublishedDate());
 		pd.setImage(property.getPropertyImages().getPropertyImageUrl());
@@ -77,9 +77,8 @@ public class PropertyService {
 		pd.setPrice(property.getPrice());
 		pd.setPriceInEur(property.getPriceInEur());
 		pd.setAddress(property.getAddress());
-		if (property.getDistrict() != null &&  property.getDistrict().getDistrictNameBg()!=null)
-			pd.setAddress(property.getAddress() + "," + property.getDistrict().getDistrictNameBg());
-		pd.setBuildUpArea(property.getArea());
+		if (property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
+			pd.setAddress(property.getAddress() + "," + property.getDistrictCourts().getDistrictCourtNameBg());		pd.setBuildUpArea(property.getArea());
 		pd.setPublishedDate(property.getPublishedDate());
 		pd.setDescription(property.getDescription());
 		pd.setLat(property.getLat());

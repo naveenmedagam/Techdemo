@@ -60,6 +60,10 @@ public class Property {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "district_id")
 	private District district;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "district_court_id")
+	private DistrictCourts districtCourts;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "property_type_id")
@@ -144,6 +148,16 @@ public class Property {
 
 	public void setDistrict(District district) {
 		this.district = district;
+	}
+	
+	
+
+	public DistrictCourts getDistrictCourts() {
+		return districtCourts;
+	}
+
+	public void setDistrictCourts(DistrictCourts districtCourts) {
+		this.districtCourts = districtCourts;
 	}
 
 	public PropertyType getPropertType() {
