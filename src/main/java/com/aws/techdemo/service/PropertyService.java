@@ -56,8 +56,11 @@ public class PropertyService {
 		pd.setPrice(property.getPrice());
 		pd.setPriceInEur(property.getPriceInEur());
 		pd.setAddress(property.getAddress());
-		if (property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
+		if (property.getAddress() != null && property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
 			pd.setAddress(property.getAddress() + "," + property.getDistrictCourts().getDistrictCourtNameBg());
+		if (property.getAddress() == null && property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
+			pd.setAddress(property.getDistrictCourts().getDistrictCourtNameBg());
+		
 		pd.setBuildUpArea(property.getArea());
 		pd.setPublishedDate(property.getPublishedDate());
 		pd.setImage(property.getPropertyImages().getPropertyImageUrl());
@@ -77,9 +80,11 @@ public class PropertyService {
 		pd.setPrice(property.getPrice());
 		pd.setPriceInEur(property.getPriceInEur());
 		pd.setAddress(property.getAddress());
-		if (property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
-			pd.setAddress(property.getAddress() + "," + property.getDistrictCourts().getDistrictCourtNameBg());		pd.setBuildUpArea(property.getArea());
-		pd.setPublishedDate(property.getPublishedDate());
+		if (property.getAddress() != null && property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
+			pd.setAddress(property.getAddress() + "," + property.getDistrictCourts().getDistrictCourtNameBg());
+		if (property.getAddress() == null && property.getDistrictCourts() != null &&  property.getDistrictCourts().getDistrictCourtNameBg()!=null)
+			pd.setAddress(property.getDistrictCourts().getDistrictCourtNameBg());
+			pd.setPublishedDate(property.getPublishedDate());
 		pd.setDescription(property.getDescription());
 		pd.setLat(property.getLat());
 		pd.setLon(property.getLon());
